@@ -5,8 +5,8 @@ This program performs scenario-based farm-level financial simulation, including 
 ## Requirements
 ---
 
-To run the program, execute `runit.bat`.  
-If the file appears as `runit.txt` instead of `runit.bat`, simply rename it to `runit.bat`.
+To run the program, execute `Runit.bat`.  
+If the file appears as `Runit.txt` instead of `Runit.bat`, simply rename it to `Runit.bat`.
 
 Before running the `.bat` file, please make sure:
 
