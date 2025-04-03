@@ -1,6 +1,6 @@
 # Crop Simulation Program
 
-This program performs scenario-based farm-level financial simulation, including crop production cost analysis, insurance selection, and stochastic simulation of yields and prices, to estimate key financial indicators such as Net Present Value (NPV) and farm profitability.
+This program performs scenario-based farm-level financial simulation to estimate farm profitability, taking into account crop sales revenue, production costs, insurance alternatives, and stochastic variations in yields and prices.
 
 ## Requirements
 ---
