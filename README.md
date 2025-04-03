@@ -5,7 +5,7 @@ This program performs scenario-based farm-level financial simulation to estimate
 ## Requirements
 ---
 
-To run the program, execute `Runit.bat`.  
+To run the program, execute `Runit.bat`.  Please make sure that both Excel files are placed in the same folder as the `.py` and `.bat` files.
 If the file appears as `Runit.txt` instead of `Runit.bat`, simply rename it to `Runit.bat`.
 
 Before running the `.bat` file, please make sure:
@@ -38,7 +38,6 @@ pip install numpy pandas scipy statsmodels numpy_financial openpyxl
 ## Required Excel Sheets
 ---
 
-Please make sure that both Excel files are placed in the same folder as the `.py` and `.bat` files.
 
 ### The file `data.csv`
 
