@@ -28,8 +28,8 @@ pip install numpy pandas scipy statsmodels numpy_financial openpyxl
 ## Model Assumptions
 ---
 
-- **Depreciation**: Constant annual depreciation is applied to buildings and machinery, but cropland is not depreciated.
-- **Other Revenue**: Includes additional income such as cotton seed sales.
+- **Depreciation**: Constant annual depreciation is applied to buildings and machinery, but cropland is not depreciated (need update mannually in assumption.xlsx).
+- **Other Revenue**: Includes additional income such as cotton seed sales (need update mannually in assumption.xlsx).
 - **Other Assumptions**:  
   For additional assumptions regarding tax computation, interest-related computation, stochastic generation of prices and yields, and the construction of financial statements (including profitability and NPV calculation), please refer to JC's Excel file:
 
