@@ -97,9 +97,6 @@ The results are based on **1,000 stochastic simulations**, and the reported valu
 - **NPV_from_Networth**:  
     Net Present Value calculated from the present value of the farm's ending net worth.
 
-- **NPV_from_Netreturns**:  
-    Net Present Value calculated from the discounted sum of net returns (net cash flow) generated over the simulation period.
-
 - **IRR**:  
     Internal Rate of Return of the simulated farm's cash flow.
 
