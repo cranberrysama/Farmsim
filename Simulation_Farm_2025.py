@@ -957,26 +957,26 @@ for i, crop in enumerate(all_crops):
             break
     if has_non_zero:
         crops.append(crop)
-Incurance_alternatives_frac = all_sheets['Incurance_alternatives_frac']
-Incurance_alternatives_frac.set_index('Crop', inplace=True)
-Incurance_alternatives_prem = all_sheets['Incurance_alternatives_prem']
-Incurance_alternatives_prem.set_index('Crop', inplace=True)
+Insurance_alternatives_frac = all_sheets['Insurance_alternatives_frac']
+Insurance_alternatives_frac.set_index('Crop', inplace=True)
+Insurance_alternatives_prem = all_sheets['Insurance_alternatives_prem']
+Insurance_alternatives_prem.set_index('Crop', inplace=True)
 
 
 
 # Get crop list and scenario list dynamically
-# crops = Incurance_alternatives_frac.index.tolist()
-# scenarios = Incurance_alternatives_frac.columns.tolist()
+# crops = Insurance_alternatives_frac.index.tolist()
+# scenarios = Insurance_alternatives_frac.columns.tolist()
 
 # Build dictionary automatically
 Insurance_selection_alternatives = {
     "Crop": crops,
     "Yield Fractions": [
-        {scenario: Incurance_alternatives_frac.loc[crop, scenario] for scenario in scenarios}
+        {scenario: Insurance_alternatives_frac.loc[crop, scenario] for scenario in scenarios}
         for crop in crops
     ],
     "Premiums $/acre": [
-        {scenario: Incurance_alternatives_prem.loc[crop, scenario] for scenario in scenarios}
+        {scenario: Insurance_alternatives_prem.loc[crop, scenario] for scenario in scenarios}
         for crop in crops
     ]
 }
