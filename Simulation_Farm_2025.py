@@ -868,7 +868,7 @@ def calculate_outcomes(data, selected_planted_acres,selected_production_costs):
 
     outcomes = {
             "NPV_from_Networth": NPV,
-            "NPV_from_Netreturns": NPV_alt,
+            # "NPV_from_Netreturns": NPV_alt,
             "IRR": IRR_rate,
             # "Payback Period (Years)": str(payback_period),
             "P(EC<0 one year)":Pr_EC_less_zero_indi,
