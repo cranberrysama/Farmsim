@@ -31,9 +31,10 @@ pip install numpy pandas scipy statsmodels numpy_financial openpyxl
 - **Depreciation**: Constant annual depreciation is applied to buildings and machinery, but cropland is not depreciated (need update mannually in Assumption.xlsx).
 - **Other Revenue**: Includes additional income such as cotton seed sales (need update mannually in Assumption.xlsx).
 - **Other Assumptions**:  
-  For additional assumptions regarding tax computation, interest-related computation, stochastic generation of prices and yields, and the construction of financial statements (including profitability and NPV calculation), please refer to JC's Excel file:
+  For additional assumptions regarding tax computation, interest-related computation, stochastic generation of prices and yields, and the construction of financial statements (including profitability and NPV calculation), please refer to JC's Excel file.
 
   `FarmSim_Eco-HAWQS_Model_Test2.xlsx`
+
 
 ## Required Excel Sheets
 ---
@@ -48,6 +49,7 @@ pip install numpy pandas scipy statsmodels numpy_financial openpyxl
     - `"Crop3 Yld (Bu/Ac)"`
     - ...
 - It is acceptable to change the units (e.g., from Bu/Ac to kg/ha), but ensure that the units are consistent with those used in your other input data (such as cost, insurance, and yield data).
+- `data.csv` corresponds to rows 3 to 13 of the **'Stoch'** sheet in JC's Excel file.
 
 ### The file `Assumption.xlsx`
 
@@ -65,6 +67,9 @@ This file stores all the assumption-related data. The following sheets are requi
 | Incurance_alternatives_prem | Insurance premiums for all scenarios |
 | inflation_rates | Annual inflation rates |
 | Planted_acres | Base and alternative scenario planted acres |
+
+- In the newly added file “Assumption with Notes,” the corresponding locations in JC’s file are indicated.
+
 
 ## Notes
 ---
