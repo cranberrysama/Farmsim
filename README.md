@@ -127,7 +127,23 @@ The results are based on **1,000 stochastic simulations**, and the reported valu
 ---
 
 
-## Update 
+## ✅ Update: August 4, 2025
+
+### 🔄 Run Simulation
+- Execute `Simulation_Farm_2025.py`
+- Toggle the stochastic process by **commenting/uncommenting**:
+  - Line **401**: stochastic
+  - Lines **403–410**: costant number
+
+### ⚠️ Important:
+- Don’t forget to set the number of simulations:
+  ```python
+  num_simulations = 1000
+### 📌 Assumptions:
+- Assumed inflation rate:
+  ```python
+  Crop_Variable_Cost_Inflation_Rate = Harvest_Cost_Inflation_Rate （can be modified）
+  ```
 
 If you have any questions, please contact:  
 mengqiaoliu@tamu.edu
