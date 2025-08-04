@@ -123,8 +123,6 @@ The results are based on **1,000 stochastic simulations**, and the reported valu
 - **BC Ratio**:  
     Benefit-Cost Ratio calculated as the ratio between the present value of benefits and the present value of costs.
 
-## Contact
----
 
 
 ## ✅ Update: August 4, 2025
@@ -144,6 +142,8 @@ The results are based on **1,000 stochastic simulations**, and the reported valu
   ```python
   Crop_Variable_Cost_Inflation_Rate = Harvest_Cost_Inflation_Rate （can be modified）
   ```
+## Contact
+---
 
 If you have any questions, please contact:  
 mengqiaoliu@tamu.edu
