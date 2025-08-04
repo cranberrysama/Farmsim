@@ -395,8 +395,20 @@ def sim_selected_scenario():
     Fraction_unsold2 = Fraction_unsold
 
     # Generate stochastic prices and yields for each crop
-    sampled_values_df = draw_samples_from_scenario(data_hist, size=len(years))
-    # predicted_values = draw_samples_from_scenario(data_hist, size=5)
+    #uncomment this**************
+    
+    
+    # sampled_values_df = draw_samples_from_scenario(data_hist, size=len(years))
+
+    sampled_values_df = pd.DataFrame({
+        'Crop1 Prc ($/Bu)': [4.3308, 4.7172, 3.5081, 3.3887, 4.3954],
+        'Crop2 Prc ($/Bu)': [0.9232, 0.92, 0.7249, 0.8632, 1.0021],
+        'Crop3 Prc ($/Bu)': [None] * 5,
+        'Crop1 Yld (Bu/Ac)': [136.2236, 103.6277, 122.8828, 114.9189, 128.3903],
+        'Crop2 Yld (lbs/Ac)': [919.3315, 1000.7110, 887.9570, 939.5743, 994.3512],
+        'Crop3 Yld (lbs/Ac)': [None] * 5
+    }, index=[2024, 2025, 2026, 2027, 2028])
+    
     sampled_values = {}
 
     for col in sampled_values_df.columns:
@@ -482,6 +494,7 @@ def calculate_outcomes(data, selected_planted_acres,selected_production_costs):
     nyear = len(inflation_interest_rates["YEAR"])
 
     # Loop through each year (2023 to 2027) to calculate costs based on inflation
+    #already accumulative inflation rate
     for i in range(nyear):  # Starting from 2023
         # Family living expenses
         new_family_living_expenses = prev_family_living_expenses * (1 + inflation_interest_rates["CPI_Family_Costs_Inflation_Rate"][i])
@@ -519,15 +532,15 @@ def calculate_outcomes(data, selected_planted_acres,selected_production_costs):
             data_cost[f"{crop} Harvesting Cost ($/Ac)"].append(crop_harvesting_costs_per_ac)
 
         # Update previous year values for the next iteration
-        prev_family_living_expenses = new_family_living_expenses
-        prev_farm_fixed_costs = new_farm_fixed_costs
-        prev_labor_costs = new_labor_costs
-        prev_machinery_costs = new_machinery_costs
-        prev_land_costs = new_land_costs
+        # prev_family_living_expenses = new_family_living_expenses
+        # prev_farm_fixed_costs = new_farm_fixed_costs
+        # prev_labor_costs = new_labor_costs
+        # prev_machinery_costs = new_machinery_costs
+        # prev_land_costs = new_land_costs
 
 
     data_cost["annual_family_living_expenses"] = data_cost["annual_family_living_expenses"][1:nyear+1]
-    data_cost["farm_fixed_costs"] = data_cost["farm_fixed_costs"][1:nyear+1] + annual_depreciation
+    data_cost["farm_fixed_costs"] = data_cost["farm_fixed_costs"][1:nyear+1] #+ annual_depreciation
     data_cost["labor_costs"] =data_cost["labor_costs"][1:nyear+1]
     data_cost["land costs"] =data_cost["land costs"][1:nyear+1]
     data_cost["machinery_costs"] =data_cost["machinery_costs"][1:nyear+1]
@@ -868,7 +881,7 @@ def calculate_outcomes(data, selected_planted_acres,selected_production_costs):
 
     outcomes = {
             "NPV_from_Networth": NPV,
-            # "NPV_from_Netreturns": NPV_alt,
+            "NPV_from_Netreturns": NPV_alt,
             "IRR": IRR_rate,
             # "Payback Period (Years)": str(payback_period),
             "P(EC<0 one year)":Pr_EC_less_zero_indi,
@@ -957,26 +970,26 @@ for i, crop in enumerate(all_crops):
             break
     if has_non_zero:
         crops.append(crop)
-Insurance_alternatives_frac = all_sheets['Insurance_alternatives_frac']
-Insurance_alternatives_frac.set_index('Crop', inplace=True)
-Insurance_alternatives_prem = all_sheets['Insurance_alternatives_prem']
-Insurance_alternatives_prem.set_index('Crop', inplace=True)
+Incurance_alternatives_frac = all_sheets['Incurance_alternatives_frac']
+Incurance_alternatives_frac.set_index('Crop', inplace=True)
+Incurance_alternatives_prem = all_sheets['Incurance_alternatives_prem']
+Incurance_alternatives_prem.set_index('Crop', inplace=True)
 
 
 
 # Get crop list and scenario list dynamically
-# crops = Insurance_alternatives_frac.index.tolist()
-# scenarios = Insurance_alternatives_frac.columns.tolist()
+# crops = Incurance_alternatives_frac.index.tolist()
+# scenarios = Incurance_alternatives_frac.columns.tolist()
 
 # Build dictionary automatically
 Insurance_selection_alternatives = {
     "Crop": crops,
     "Yield Fractions": [
-        {scenario: Insurance_alternatives_frac.loc[crop, scenario] for scenario in scenarios}
+        {scenario: Incurance_alternatives_frac.loc[crop, scenario] for scenario in scenarios}
         for crop in crops
     ],
     "Premiums $/acre": [
-        {scenario: Insurance_alternatives_prem.loc[crop, scenario] for scenario in scenarios}
+        {scenario: Incurance_alternatives_prem.loc[crop, scenario] for scenario in scenarios}
         for crop in crops
     ]
 }
@@ -1097,7 +1110,7 @@ for j in range(1, len(scenario_list) + 1):
 
     # Example usage
     #Setting the simulation times
-    num_simulations = 1000
+    num_simulations = 1
     final_outcomes_mean = simulate_scenarios(num_simulations, sim_selected_scenario)
     formatted_output = format_outcomes(final_outcomes_mean)
     print(formatted_output)
