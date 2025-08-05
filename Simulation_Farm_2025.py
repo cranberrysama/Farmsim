@@ -1,3 +1,5 @@
+
+
 def clear_globals():
     keys_to_clear = [key for key in globals().keys() if not key.startswith("__")]
     for key in keys_to_clear:
@@ -398,16 +400,16 @@ def sim_selected_scenario():
     #uncomment this**************
     
     
-    # sampled_values_df = draw_samples_from_scenario(data_hist, size=len(years))
+    sampled_values_df = draw_samples_from_scenario(data_hist, size=len(years))
 
-    sampled_values_df = pd.DataFrame({
-        'Crop1 Prc ($/Bu)': [4.3308, 4.7172, 3.5081, 3.3887, 4.3954],
-        'Crop2 Prc ($/Bu)': [0.9232, 0.92, 0.7249, 0.8632, 1.0021],
-        'Crop3 Prc ($/Bu)': [None] * 5,
-        'Crop1 Yld (Bu/Ac)': [136.2236, 103.6277, 122.8828, 114.9189, 128.3903],
-        'Crop2 Yld (lbs/Ac)': [919.3315, 1000.7110, 887.9570, 939.5743, 994.3512],
-        'Crop3 Yld (lbs/Ac)': [None] * 5
-    }, index=[2024, 2025, 2026, 2027, 2028])
+    # sampled_values_df = pd.DataFrame({
+    #     'Crop1 Prc ($/Bu)': [4.3308, 4.7172, 3.5081, 3.3887, 4.3954],
+    #     'Crop2 Prc ($/Bu)': [0.9232, 0.9195, 0.7249, 0.8632, 1.0021],
+    #     'Crop3 Prc ($/Bu)': [None] * 5,
+    #     'Crop1 Yld (Bu/Ac)': [136.2236, 103.6277, 122.8828, 114.9189, 128.3903],
+    #     'Crop2 Yld (lbs/Ac)': [919.3315, 1000.7110, 887.9570, 939.5743, 994.3512],
+    #     'Crop3 Yld (lbs/Ac)': [None] * 5
+    # }, index=[2024, 2025, 2026, 2027, 2028])
     
     sampled_values = {}
 
@@ -781,7 +783,7 @@ def calculate_outcomes(data, selected_planted_acres,selected_production_costs):
         # taxable_income = cash_flow_statement.loc[i, 'Net Cash Farm Income'] - deductions
 
         # taxable_income = cash_flow_statement.loc[i, 'Net Cash Farm Income']/3
-        income_taxes = calculate_tax_from_bracket(cash_flow_statement.loc[i, 'Net Cash Farm Income'])
+        income_taxes = calculate_tax_from_bracket(cash_flow_statement.loc[i, 'Net Cash Farm Income'] + cash_flow_statement.loc[i, 'Interest Earned']  - annual_depreciation)
         cash_flow_statement.loc[i, 'Income Taxes'] = income_taxes
         cash_flow_statement.loc[i, 'Repay Cash Flow Deficit Loans'] = last_year_cash_flow_deficits
 
@@ -812,6 +814,7 @@ def calculate_outcomes(data, selected_planted_acres,selected_production_costs):
         balance_sheet.loc[i, 'Total Assets']= (
                 balance_sheet.loc[i, 'Ending Cash Reserves Dec 31'] +
                 balance_sheet.loc[i, 'Land Value']
+                - annual_depreciation
         )
 
         balance_sheet.loc[i, 'Land Debt'] = remaining_principal
@@ -875,7 +878,7 @@ def calculate_outcomes(data, selected_planted_acres,selected_production_costs):
     # print(outstanding_loans_amount)
     # print(data_cost["land costs"][0])
     # print(BC_ratio)
-    NPV_alt = -outstanding_loans_amount + sum(IRR_df["PV NetReturns"][0:-1])
+    NPV_alt = IRR_df.loc[0, "IRR Values"] + sum(IRR_df["PV NetReturns"][0:-1]) #based on cash flow
     # payback_period = calculate_payback_period(outstanding_loans_amount, IRR_df["PV NetReturns"].iloc[:-1])
 
 
@@ -1110,7 +1113,7 @@ for j in range(1, len(scenario_list) + 1):
 
     # Example usage
     #Setting the simulation times
-    num_simulations = 1
+    num_simulations = 500
     final_outcomes_mean = simulate_scenarios(num_simulations, sim_selected_scenario)
     formatted_output = format_outcomes(final_outcomes_mean)
     print(formatted_output)
