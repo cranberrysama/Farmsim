@@ -142,6 +142,12 @@ The results are based on **1,000 stochastic simulations**, and the reported valu
   ```python
   Crop_Variable_Cost_Inflation_Rate = Harvest_Cost_Inflation_Rate （can be modified）
   ```
+## ✅ Update: August 5, 2025
+
+- Add depreciation in balance sheet （for both JC excel and python code）
+- 
+
+  
 ## Contact
 ---
 
