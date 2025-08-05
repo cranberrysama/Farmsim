@@ -102,6 +102,9 @@ The results are based on **1,000 stochastic simulations**, and the reported valu
 - **NPV_from_Networth**:  
     Net Present Value calculated from the present value of the farm's ending net worth.
 
+  - **NPV_from_cashflow**:  
+    Net Present Value calculated from the net cash flow of each year.
+
 - **IRR**:  
     Internal Rate of Return of the simulated farm's cash flow.
 
@@ -145,7 +148,7 @@ The results are based on **1,000 stochastic simulations**, and the reported valu
 ## ✅ Update: August 5, 2025
 
 - Add depreciation in balance sheet （for both JC excel and python code）
-- 
+- Update NPV from cashflow （more common method）
 
   
 ## Contact
